@@ -1,8 +1,5 @@
 import Axios, { AxiosRequestConfig } from "axios";
 
-const API_URL =
-  "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
-
 const API_TOKEN = process.env.API_TOKEN;
 
 const requestData: AxiosRequestConfig = {
@@ -16,7 +13,7 @@ const requestData: AxiosRequestConfig = {
 };
 
 // I might have over complicated this one :'(
-export const GET = <T>(url: string = API_URL) => {
+export const GET = <T>(url: string) => {
   return new Promise<T>((resolve, reject) => {
     let data;
 

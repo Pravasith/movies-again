@@ -1,8 +1,8 @@
 import ICard from "@/components/UI/ICard/ICard";
-import { MovieType } from "services/interface";
+import { GenreType, MovieType, MoviesWithGenres } from "services/interface";
 
 interface Props {
-  moviesList: MovieType[];
+  moviesList: MoviesWithGenres[];
 }
 
 const MoviesList = (props: Props) => {
@@ -23,7 +23,7 @@ const MoviesList = (props: Props) => {
             releaseDate={movie.release_date}
             poster={movie.poster_path}
             isLoading={false}
-            genre="thriller"
+            genres={movie.genres}
           />
         );
       })}

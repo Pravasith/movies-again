@@ -9,6 +9,7 @@ import {
 import ITypography from "@/components/UI/ITypography/ITypography";
 import IImage from "@/components/UI/IImage/IImage";
 import { TypographyVariants } from "@/components/UI/ITypography/interface";
+import { GenreType } from "services/interface";
 
 interface ICardProps {
   title: string;
@@ -17,7 +18,7 @@ interface ICardProps {
   releaseDate: string;
   className?: string;
   isLoading: boolean;
-  genre: string;
+  genres: GenreType[];
 }
 
 const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
@@ -29,6 +30,7 @@ const ICard = ({
   poster,
   className,
   isLoading,
+  genres,
 }: ICardProps) => {
   return (
     <div
@@ -62,12 +64,15 @@ const ICard = ({
               <ITypography className={`my-2`}>{overview}</ITypography>
 
               <ITypography className={`my-2`}>{releaseDate}</ITypography>
-            </CardContent>
 
-            <CardActions>
-              <Button size="small">Share</Button>
-              <Button size="small">Learn More</Button>
-            </CardActions>
+              {genres.map((genre) => {
+                return (
+                  <Button className="inline-block" key={genre.id} size="small">
+                    {genre.name}
+                  </Button>
+                );
+              })}
+            </CardContent>
           </>
         )}
       </Card>

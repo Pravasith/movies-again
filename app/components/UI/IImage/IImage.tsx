@@ -10,7 +10,6 @@ const IImage = (props: ImageBlockProps) => {
                     ${props.fitToContainer ? "h-[16rem]" : ""}
                 `}
       >
-        <div className="z-10 absolute w-full h-full"></div>
         {props.fitToContainer ? (
           <Image
             src={props.imageBlock.src}
