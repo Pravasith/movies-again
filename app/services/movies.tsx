@@ -9,6 +9,8 @@ export const API_URLS = {
   GET_BY_GENRE:
     API_BASE_URL +
     "discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=",
+  GET_BY_KEYWORD: (keyword: string) =>
+    `${API_BASE_URL}search/movie?query=${keyword}&include_adult=false&language=en-US&page=1`,
 } as const;
 
 export async function getPopularMovies() {
@@ -42,6 +44,19 @@ export async function getByGenre(id: string) {
 
   try {
     const response = await GET<MoviesType>(API_URLS.GET_BY_GENRE + id);
+    movies = response.results;
+  } catch {
+    console.error("Error: error in fetching movies");
+  }
+
+  return movies;
+}
+
+export async function getByKeyword(keyword: string) {
+  let movies: MovieType[] = [];
+
+  try {
+    const response = await GET<MoviesType>(API_URLS.GET_BY_KEYWORD(keyword));
     movies = response.results;
   } catch {
     console.error("Error: error in fetching movies");

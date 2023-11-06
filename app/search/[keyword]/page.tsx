@@ -1,13 +1,14 @@
 import MoviesList from "@/components/MoviesList/MoviesList";
 import { sanitizeMoviesByGenres } from "@/utils/utils";
-import { getAllGenres, getByGenre } from "services/movies";
+import { getAllGenres, getByKeyword } from "services/movies";
 
 interface Props {
-  genre: string;
+  keyword: string;
 }
-export default async function MoviesByGenre({ params }: { params: Props }) {
+
+export default async function MoviesByKeyword({ params }: { params: Props }) {
   const aggregateData = await Promise.all([
-    getByGenre(params.genre),
+    getByKeyword(params.keyword),
     getAllGenres(),
   ]);
   const [movies, genres] = aggregateData;

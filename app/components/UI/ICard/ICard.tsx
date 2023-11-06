@@ -59,9 +59,9 @@ const ICard = ({
 
               <ITypography className={`my-2`}>{releaseDate}</ITypography>
 
-              {genres.map((genre) => {
+              {genres.map((genre, i) => {
                 return (
-                  <Link key={genre.id} href={"/movies/" + genre.id}>
+                  <Link key={genre.id + i} href={"/movies/" + genre.id}>
                     <Button
                       className="inline-block"
                       key={genre.id}
