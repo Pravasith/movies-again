@@ -4,6 +4,10 @@
 
 @import url("https://fonts.cdnfonts.com/css/noe-display");
 
+body {
+  @apply bg-gray-800;
+}
+
 @layer utilities {
   /* CENTER CHILDREN IN A ROW */
   .flex-row-center {

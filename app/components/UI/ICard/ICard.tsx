@@ -20,6 +20,8 @@ interface ICardProps {
   genre: string;
 }
 
+const IMAGE_PATH = "https://image.tmdb.org/t/p/w500";
+
 const ICard = ({
   title,
   overview,
@@ -49,7 +51,7 @@ const ICard = ({
                 fitToContainer
                 imageBlock={{
                   className: `rounded-lg`,
-                  src: poster,
+                  src: IMAGE_PATH + poster,
                   alt: "Image thumbnail for " + title,
                 }}
               />

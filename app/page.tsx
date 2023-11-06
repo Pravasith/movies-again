@@ -1,14 +1,12 @@
 import MoviesList from "@/components/Pages/MoviesList/MoviesList";
+import { getPopularMovies } from "services/movies";
 
-// async function getMovies() {
-//         const res = await fetch
-//     }
+export default async function Home() {
+  const movies = await getPopularMovies();
 
-export default function Home() {
   return (
-    <main className="flex bg-yellow-300 flex-col items-center justify-between p-24">
-      Search bar
-      <MoviesList />
+    <main className="flex flex-col items-center justify-between p-24">
+      <MoviesList moviesList={movies} />
     </main>
   );
 }

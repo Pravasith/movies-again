@@ -1,6 +1,11 @@
 import ICard from "@/components/UI/ICard/ICard";
+import { MovieType } from "services/interface";
 
-const MoviesList = () => {
+interface Props {
+  moviesList: MovieType[];
+}
+
+const MoviesList = (props: Props) => {
   return (
     <div
       className={` 
@@ -9,14 +14,19 @@ const MoviesList = () => {
         laptop:grid-cols-3
       `}
     >
-      <ICard
-        title="This is title"
-        overview="THisi is akdjsakdj"
-        releaseDate="asdas"
-        poster="https://picsum.photos/200/300"
-        isLoading={false}
-        genre="thriller"
-      />
+      {props.moviesList.map((movie) => {
+        return (
+          <ICard
+            key={movie.id}
+            title={movie.title}
+            overview={movie.overview}
+            releaseDate={movie.release_date}
+            poster={movie.poster_path}
+            isLoading={false}
+            genre="thriller"
+          />
+        );
+      })}
     </div>
   );
 };
