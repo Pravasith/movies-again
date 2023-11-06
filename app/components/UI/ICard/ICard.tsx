@@ -1,15 +1,9 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  Divider,
-  Skeleton,
-} from "@mui/material";
+import { Button, Card, CardContent, Divider, Skeleton } from "@mui/material";
 import ITypography from "@/components/UI/ITypography/ITypography";
 import IImage from "@/components/UI/IImage/IImage";
 import { TypographyVariants } from "@/components/UI/ITypography/interface";
 import { GenreType } from "services/interface";
+import Link from "next/link";
 
 interface ICardProps {
   title: string;
@@ -67,9 +61,15 @@ const ICard = ({
 
               {genres.map((genre) => {
                 return (
-                  <Button className="inline-block" key={genre.id} size="small">
-                    {genre.name}
-                  </Button>
+                  <Link key={genre.id} href={"/movies/" + genre.id}>
+                    <Button
+                      className="inline-block"
+                      key={genre.id}
+                      size="small"
+                    >
+                      {genre.name}
+                    </Button>
+                  </Link>
                 );
               })}
             </CardContent>

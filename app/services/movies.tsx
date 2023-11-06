@@ -6,6 +6,9 @@ export const API_BASE_URL = "https://api.themoviedb.org/3/";
 export const API_URLS = {
   GET_POPULAR_MOVIES: API_BASE_URL + "movie/popular?language=en-US&page=1",
   GET_ALL_GENRES: API_BASE_URL + "genre/movie/list?language=en",
+  GET_BY_GENRE:
+    API_BASE_URL +
+    "discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=",
 } as const;
 
 export async function getPopularMovies() {
@@ -34,15 +37,15 @@ export async function getAllGenres() {
   return genres;
 }
 
-// export async function getMoviesByGenre() {
-//   let movies: MovieType[] = [];
-//
-//   try {
-//     const response = await GET<MoviesType>();
-//     movies = response.results;
-//   } catch {
-//     console.error("Error: error in fetching movies");
-//   }
-//
-//   return movies;
-// }
+export async function getByGenre(id: string) {
+  let movies: MovieType[] = [];
+
+  try {
+    const response = await GET<MoviesType>(API_URLS.GET_BY_GENRE + id);
+    movies = response.results;
+  } catch {
+    console.error("Error: error in fetching movies");
+  }
+
+  return movies;
+}
